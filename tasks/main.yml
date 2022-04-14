@@ -1,0 +1,30 @@
+---
+# tasks file for ansible-aws-vpn-client
+# Repo
+# - name: Add GPG key
+#   apt_key:
+#     url: https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo/awsvpnclient_public_key.asc
+#     state: present
+
+# - name: Add Repo SRC
+#   apt_repository:
+#     repo: 'deb [arch=amd64] https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo ubuntu-20.04 main'
+#     state: present
+
+# - name: apt-get update
+#   shell: apt-get update
+#   become: true
+#   become_user: root
+#   ignore_errors: yes
+#   when: ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
+
+# - name: Install AWS VPN Client
+#   apt:
+#     name: awsvpnclient
+#     state: present
+
+- name: Install a .deb package for AWS VPN Client
+  apt:
+    deb: https://d20adtppz83p9s.cloudfront.net/GTK/latest/awsvpnclient_amd64.deb
+  when: ansible_os_family == "Debian"
+  ignore_errors: true
