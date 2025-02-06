@@ -1,7 +1,7 @@
 ---
 # tasks file for ansible-aws-vpn-client
 # Install AWS VPN Client on Debian
-- ame: Install a .deb package for AWS VPN Client
+- name: Install a .deb package for AWS VPN Client
   apt:
     deb: https://d20adtppz83p9s.cloudfront.net/GTK/latest/awsvpnclient_amd64.deb
   when: ansible_os_family == "Debian"
